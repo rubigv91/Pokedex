@@ -1,8 +1,12 @@
+using Pokedex.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<UserService> ();
+builder.Services.AddSingleton<List<User>> ();
 
 var app = builder.Build();
 
