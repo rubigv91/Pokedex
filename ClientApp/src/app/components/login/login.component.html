@@ -1,0 +1,51 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Registro" disabled value="Nuevo Entrenador">
+    </mat-form-field>
+  
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombre">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <input matInput placeholder="Apellido">
+      </mat-form-field></td>
+    </tr></table>
+  
+    <p>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Correo electrónico">example@example.com</textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Fecha de nacimiento"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput #message maxlength="256" placeholder="Contraseña">
+        <mat-hint align="start"><strong>Al menos 8 caracteres</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput #message1 maxlength="256" placeholder="Fecha de Nacimiento">
+        <mat-hint align="start"><strong>Formato DDMMYYYY</strong> </mat-hint>
+        <mat-hint align="end">{{message1.value.length}} / 256</mat-hint>
+      </mat-form-field>
+      
+
+      <mat-form-field>
+        <mat-label>Selecciona equipo</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let equipo of equipos" [value]="equipo">
+            {{equipo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </p>
+  
+        
+  
+      
+  </form>
+  
