@@ -4,7 +4,7 @@ using Pokedex.Models;
 
 namespace Pokedex.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
 
      
@@ -23,6 +23,19 @@ namespace Pokedex.Controllers
         {
             _userService.Add(user);
             return Created("/login",user);
+        }
+
+        [HttpPost]
+        public ActionResult ReadLogin([FromBody] UserLogin userlogin)
+        {
+
+            var check = _userService.ReadLogin(userlogin);
+            if (check != null)
+            {
+
+                return Ok(check);
+            }
+            return NotFound();
         }
 
         [HttpGet]

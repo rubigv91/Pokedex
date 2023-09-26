@@ -8,6 +8,17 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<UserService> ();
 builder.Services.AddSingleton<List<User>> ();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ClientPermission", policy => {
+        policy.AllowAnyHeader()
+        .AllowAnyMethod()
+        .WithOrigins("https://localhost:7132")
+        .WithOrigins("https://localhost:44459")
+        .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,7 +31,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseCors("ClientPermission");
 
 app.MapControllerRoute(
     name: "default",

@@ -1,4 +1,6 @@
-﻿namespace Pokedex.Models
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Pokedex.Models
 {
     public class UserService
     {
@@ -19,6 +21,16 @@
 
         public List<User> GetList() {
         return _users;
+        }
+
+        public User ReadLogin(UserLogin item) {
+
+
+            var logincheck = _users.Where(u => item.pwd == u.Password && item.email == u.Email).FirstOrDefault();
+            
+
+            return logincheck;
+        
         }
     }
 }

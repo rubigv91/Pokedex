@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserLogin } from 'src/app/models/UserLogin';
 import { Users } from 'src/app/models/Users';
+import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -12,8 +14,10 @@ export class LoginComponent implements OnInit{
   
    equipos=['amarillo', 'rojo', 'azul'];
    usuario={} as Users;
+   user={} as Users;
+   
 
-  constructor() {
+  constructor(private readonly _service:UserService) {
     
     
   }
@@ -21,11 +25,18 @@ export class LoginComponent implements OnInit{
     
   }
 
-  mostrar(item:Users){
-    this.usuario=item;
-    console.log(this.usuario)
+  
+  login(temp:UserLogin){
+    
+    this._service.UserSent(temp).subscribe(u=>{
+      
+      if (this.user!=null){
+        console.log("es un usuario");        
+      }
+    });
 
-  }
+
+  } 
 
   
 

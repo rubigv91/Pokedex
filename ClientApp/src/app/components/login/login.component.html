@@ -1,0 +1,20 @@
+<form #myForm="ngForm" (ngSubmit)="login(myForm.value)" class="example-form" >
+    
+        <mat-form-field class="example-full-width">
+            <input matInput name="email" ngModel placeholder="Nombre">
+        </mat-form-field>
+        
+        
+        <mat-form-field class="example-full-width">
+            <input matInput name="pwd" ngModel placeholder="Contraseña" type="password">
+        </mat-form-field>
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+                <button mat-raised-button color="accent" type="submit">Logear</button>
+            </td>
+            <td>
+                <button mat-raised-button color="primary" type="button" [routerLink]="['/signup']" >Crear Cuenta</button>
+            </td>
+        </tr>
+        </table>
+</form>

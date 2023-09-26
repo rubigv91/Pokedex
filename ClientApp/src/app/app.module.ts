@@ -17,6 +17,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import { SignupComponent } from './components/signup/signup.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 
@@ -42,11 +44,17 @@ import { SignupComponent } from './components/signup/signup.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatTooltipModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: SignupComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'signup', component: SignupComponent},
+      { path: 'login', component: LoginComponent},
+
+
+
     ])
   ],
   providers: [],
