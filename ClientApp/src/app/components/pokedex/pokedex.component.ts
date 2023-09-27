@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Pokemon } from 'src/app/models/Pokemon';
 import {MatDialog} from '@angular/material/dialog';
 import { PokeinfoComponent } from '../pokeinfo/pokeinfo.component';
+import { FavoriteURL } from 'src/app/models/FavoriteURL';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class PokedexComponent implements OnInit {
  
 	listpokemon={} as any;
   pokemon={} as Pokemon;
-
+  color:string='accent';
+  listFavoriteURL:List<FavoriteURL>=[] as FavoriteURL[];
   ngOnInit() {
    
 		 this.http
@@ -40,17 +42,23 @@ export class PokedexComponent implements OnInit {
     });
   }
 
-  favoritear(name:string){
+  favoritear(name:any){
     console.log(name);
-
+    this.listFavoriteURL.AddList(name);
+     
      }
 
   masInfo(name:string){
-      this.dialog.open(PokeinfoComponent, { height:'100%',
+      this.dialog.open(PokeinfoComponent, { height:'50%',
         data:name      
        });
 
   }
 
+  
+
+changeColor() {
+  
+}
   
 }

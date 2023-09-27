@@ -1,43 +1,90 @@
-<mat-grid-list cols="4" rowHeight="200px" colspan="2" rowspan="1">
-  <mat-grid-tile-header>
-    <h1> {{data}} #{{listSkills.id}} </h1>
-  </mat-grid-tile-header>
-<mat-grid-tile>
-  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{listSkills.id}}.png">
-</mat-grid-tile>
+<div class="modal-container">
+  <h1 style="text-transform: capitalize;"> {{data}} #{{listSkills.id}} </h1>
+  <div style="display:flex; justify-content: space-between;">
+    <div style="display:flex; flex-direction:column;  width: 200px;">
+      <div>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{listSkills.id}}.png">
+      </div>
+      <hr>
+      <div style="display:flex;justify-content:start; flex-direction:row; align-items: center;">
+        <div style="width: 80px;">
+          Fisionomia
+        </div>
+        <div  style="display:flex;justify-content: start; flex-direction:column;">
+          <div>
+            Altura:{{listSkills.height}}
+          </div>
+          <div>
+            Peso:{{listSkills.weight}}
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div style="display:flex;justify-content: start; flex-direction:row;">
+        <div style="width: 80px;">
+          Tipo
+        </div>
+        <div style="display:flex;justify-content: start; flex-direction:column; ">
+          <div *ngFor="let tipo of listSkills.types">
+            {{tipo.type.name}}
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div style="display:flex;justify-content: space-between; flex-direction:row; align-items: center;">
+        <div style="width: 80px;">
+          Stats
+        </div>
+        <div style="display:flex;justify-content: start; flex-direction:column; align-items: left;">
+          <div *ngFor="let stats of listSkills.stats">
+            {{stats.stat.name}} : {{stats.base_stat}}
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <mat-grid-tile>
-      Caracteristicas físicas
-    </mat-grid-tile>
-    <mat-grid-tile>
-      Peso = {{listSkills.weight}} Altura = {{listSkills.height}}
-    </mat-grid-tile>
-    
 
- 
+    <div>
+      Habilidades
+      <hr>
+      <div *ngFor="let skills of listSkills.abilities">
+        {{skills.ability.name}}
+      </div>
+    </div>
+    <div>
+      Movimiento
+      <hr>
+      <div *ngFor="let moves of listSkills.moves">
+        {{moves.move.name}}
+      </div>
+    </div>
+    <div>
+      Vers  iones donde aparece
+      <hr>
+      <div *ngFor="let version of listSkills.game_indices">
+        {{version.version.name}}
+      </div>
+    </div>
+  </div>
 
 
-</mat-grid-list>
 
-
-<h2 mat-dialog-title></h2>
-<div mat-dialog-content ></div>
-
-  <ng-container matColumnDef="listSkills">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let user"> {{listSkills.type.name}} </mat-cell>
-    <mat-header-row *matHeaderRowDef="listSkills.abilities"></mat-header-row>
-<mat-row *matRowDef="let myRowData; columns: listSkills.abilities"></mat-row>
-  </ng-container>
+  <h2 mat-dialog-title></h2>
+  <div mat-dialog-content></div>
 
 
 
-<!-- 
+
+
+  <!-- 
 <th>
   <p mat-dialog-title>Tipo: </p>
 </th>
 <tr mat-dialog-content *ngFor="let tipo of listSkills.types"  > {{tipo.type.name}}</tr>
   <th mat-dialog-title>Movimientos </th>
+
+
+
   <td mat-dialog-content *ngFor="let moves of listSkills.moves">
     {{moves.move.name}}
   </td>
@@ -53,15 +100,11 @@
   {{version.version.name}}
 
 </td> -->
-
-
-<h2 mat-dialog-title>Stats</h2>
-<!-- <div mat-dialog-content *ngFor="let stats of listSkills.stats"  > {{stats.stat.name}} : {{stats.base_stat}} </div> -->
+  <!-- <div mat-dialog-content *ngFor="let stats of listSkills.stats"  > {{stats.stat.name}} : {{stats.base_stat}} </div> -->
 
 
 
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cerrar</button>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cerrar</button>
+  </div>
 </div>
-
-

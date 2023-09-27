@@ -1,23 +1,36 @@
 <p>pokedex</p>
 
-
-<div *ngFor="let pokemon of listpokemon.results">
-        {{pokemon.name}}
+<div style="display:flex; justify-content: center; flex-direction:column">
+  <div *ngFor="let pokemon of listpokemon.results">
+    <div style="display:flex; align-items: center; flex-direction:row">
+      <div style="position:relative;width: 100px; height: 48px;">
+        <div style="text-transform: capitalize;position: absolute; margin-top: 15px;">
+          {{pokemon.name}}
+        </div>
+      </div>
+      <div>
         <button mat-icon-button color="black" (click)="masInfo(pokemon.name)">
-            <mat-icon>add</mat-icon>
-          </button>
-        <button mat-icon-button color="accent" (click)="favoritear(pokemon.name)">
-            <mat-icon>favorite</mat-icon>
-          </button>
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <div>
+        <button mat-icon-button [ngStyle]="{'color': 'red' }" (click)="favoritear(pokemon.url)">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<table class="example-full-width" cellspacing="0"><tr><td>
-<button *ngIf="listpokemon.next" mat-raised-button (click)="siguiente()"> 
-    Siguiente
-</button>
-
-<button *ngIf="listpokemon.previous" mat-raised-button (click)="atras()" > 
-    Atras
-</button>
-</td>
-</tr></table>
+<table class="example-full-width" cellspacing="0">
+  <tr>
+    <td>
+      <button *ngIf="listpokemon.next" mat-raised-button (click)="siguiente()">
+        Siguiente
+      </button>
+      <button *ngIf="listpokemon.previous" mat-raised-button (click)="atras()">
+        Atras
+      </button>
+    </td>
+  </tr>
+</table>
