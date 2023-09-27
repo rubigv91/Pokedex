@@ -1,16 +1,62 @@
-<h1 mat-dialog-title>{{data}}</h1>
-<h2 mat-dialog-title>Caracteristicas físicas</h2>
-<div mat-dialog-content *ngFor="let skills of listSkills.abilities"  > {{skills.ability.name}}</div>
-<h2 mat-dialog-title>Tipo</h2>
-<div mat-dialog-content *ngFor="let skills of listSkills.abilities"  > {{skills.ability.name}}</div>
-<h2 mat-dialog-title>Movimientos</h2>
-<div mat-dialog-content *ngFor="let skills of listSkills.abilities"  > {{skills.ability.name}}</div>
-<h2 mat-dialog-title>Habilidades</h2>
-<div mat-dialog-content *ngFor="let skills of listSkills.abilities"  > {{skills.ability.name}}</div>
-<h2 mat-dialog-title>Aparece en las versiones:</h2>
-<!-- <div mat-dialog-content *ngFor="let version of listSkills.game_indices"  > {{version.version.name}}</div> -->
+<mat-grid-list cols="4" rowHeight="200px" colspan="2" rowspan="1">
+  <mat-grid-tile-header>
+    <h1> {{data}} #{{listSkills.id}} </h1>
+  </mat-grid-tile-header>
+<mat-grid-tile>
+  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{listSkills.id}}.png">
+</mat-grid-tile>
+
+    <mat-grid-tile>
+      Caracteristicas físicas
+    </mat-grid-tile>
+    <mat-grid-tile>
+      Peso = {{listSkills.weight}} Altura = {{listSkills.height}}
+    </mat-grid-tile>
+    
+
+ 
+
+
+</mat-grid-list>
+
+
+<h2 mat-dialog-title></h2>
+<div mat-dialog-content ></div>
+
+  <ng-container matColumnDef="listSkills">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{listSkills.type.name}} </mat-cell>
+    <mat-header-row *matHeaderRowDef="listSkills.abilities"></mat-header-row>
+<mat-row *matRowDef="let myRowData; columns: listSkills.abilities"></mat-row>
+  </ng-container>
+
+
+
+<!-- 
+<th>
+  <p mat-dialog-title>Tipo: </p>
+</th>
+<tr mat-dialog-content *ngFor="let tipo of listSkills.types"  > {{tipo.type.name}}</tr>
+  <th mat-dialog-title>Movimientos </th>
+  <td mat-dialog-content *ngFor="let moves of listSkills.moves">
+    {{moves.move.name}}
+  </td>
+  <th  mat-dialog-title>Habilidades  </th>
+  <th mat-dialog-title>Aparece en las versiones: </th>
+
+<td mat-dialog-content *ngFor="let skills of listSkills.abilities" >
+  {{skills.ability.name}}
+ 
+ </td>
+ 
+<td mat-dialog-content *ngFor="let version of listSkills.game_indices"  >
+  {{version.version.name}}
+
+</td> -->
+
+
 <h2 mat-dialog-title>Stats</h2>
-<div mat-dialog-content *ngFor="let skills of listSkills.abilities"  > {{skills.ability.name}}</div>
+<!-- <div mat-dialog-content *ngFor="let stats of listSkills.stats"  > {{stats.stat.name}} : {{stats.base_stat}} </div> -->
 
 
 

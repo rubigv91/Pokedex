@@ -23,6 +23,10 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PokeinfoComponent } from './components/pokeinfo/pokeinfo.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+
 
 
 
@@ -52,6 +56,8 @@ import { PokeinfoComponent } from './components/pokeinfo/pokeinfo.component';
     MatListModule,
     MatIconModule,
     MatDialogModule,
+    MatTableModule,
+    MatGridListModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: PokedexComponent, pathMatch: 'full' },

@@ -46,7 +46,7 @@ export class PokedexComponent implements OnInit {
      }
 
   masInfo(name:string){
-      this.dialog.open(PokeinfoComponent, {
+      this.dialog.open(PokeinfoComponent, { height:'100%',
         data:name      
        });
 
