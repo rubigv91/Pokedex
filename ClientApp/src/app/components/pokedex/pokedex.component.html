@@ -1,0 +1,23 @@
+<p>pokedex</p>
+
+
+<div *ngFor="let pokemon of listpokemon.results">
+        {{pokemon.name}}
+        <button mat-icon-button color="black" (click)="masInfo(pokemon.name)">
+            <mat-icon>add</mat-icon>
+          </button>
+        <button mat-icon-button color="accent" (click)="favoritear(pokemon.name)">
+            <mat-icon>favorite</mat-icon>
+          </button>
+</div>
+
+<table class="example-full-width" cellspacing="0"><tr><td>
+<button *ngIf="listpokemon.next" mat-raised-button (click)="siguiente()"> 
+    Siguiente
+</button>
+
+<button *ngIf="listpokemon.previous" mat-raised-button (click)="atras()" > 
+    Atras
+</button>
+</td>
+</tr></table>

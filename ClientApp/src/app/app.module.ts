@@ -18,9 +18,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import { SignupComponent } from './components/signup/signup.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
-
-
+import { PokedexComponent } from './components/pokedex/pokedex.component';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PokeinfoComponent } from './components/pokeinfo/pokeinfo.component';
 
 
 
@@ -33,6 +35,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FetchDataComponent,
     LoginComponent,
     SignupComponent,
+    PokedexComponent,
+    PokeinfoComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -45,9 +49,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatNativeDateModule,
     MatButtonModule,
     MatTooltipModule,
+    MatListModule,
+    MatIconModule,
+    MatDialogModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: PokedexComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'signup', component: SignupComponent},
