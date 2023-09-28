@@ -9,7 +9,7 @@
         </div>
       </div>
       <div>
-        <button mat-icon-button color="black" (click)="masInfo(pokemon.name)">
+        <button mat-icon-button color="black" (click)="getPokemonByURL(pokemon.url)">
           <mat-icon>add</mat-icon>
         </button>
       </div>
@@ -25,10 +25,10 @@
 <table class="example-full-width" cellspacing="0">
   <tr>
     <td>
-      <button *ngIf="listpokemon.next" mat-raised-button (click)="siguiente()">
+      <button mat-raised-button >
         Siguiente
       </button>
-      <button *ngIf="listpokemon.previous" mat-raised-button (click)="atras()">
+      <button mat-raised-button >
         Atras
       </button>
     </td>

@@ -1,9 +1,9 @@
 <div class="modal-container">
-  <h1 style="text-transform: capitalize;"> {{data}} #{{listSkills.id}} </h1>
+  <h1 style="text-transform: capitalize;"> {{listSkills.name}} #{{listSkills.id}} </h1>
   <div style="display:flex; justify-content: space-between;">
     <div style="display:flex; flex-direction:column;  width: 200px;">
       <div>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{listSkills.id}}.png">
+        <img *ngIf="listSkills.id" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{listSkills.id}}.png">
       </div>
       <hr>
       <div style="display:flex;justify-content:start; flex-direction:row; align-items: center;">
@@ -59,51 +59,13 @@
       </div>
     </div>
     <div>
-      Vers  iones donde aparece
+      Versiones donde aparece
       <hr>
       <div *ngFor="let version of listSkills.game_indices">
         {{version.version.name}}
       </div>
     </div>
   </div>
-
-
-
-  <h2 mat-dialog-title></h2>
-  <div mat-dialog-content></div>
-
-
-
-
-
-  <!-- 
-<th>
-  <p mat-dialog-title>Tipo: </p>
-</th>
-<tr mat-dialog-content *ngFor="let tipo of listSkills.types"  > {{tipo.type.name}}</tr>
-  <th mat-dialog-title>Movimientos </th>
-
-
-
-  <td mat-dialog-content *ngFor="let moves of listSkills.moves">
-    {{moves.move.name}}
-  </td>
-  <th  mat-dialog-title>Habilidades  </th>
-  <th mat-dialog-title>Aparece en las versiones: </th>
-
-<td mat-dialog-content *ngFor="let skills of listSkills.abilities" >
-  {{skills.ability.name}}
- 
- </td>
- 
-<td mat-dialog-content *ngFor="let version of listSkills.game_indices"  >
-  {{version.version.name}}
-
-</td> -->
-  <!-- <div mat-dialog-content *ngFor="let stats of listSkills.stats"  > {{stats.stat.name}} : {{stats.base_stat}} </div> -->
-
-
-
   <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Cerrar</button>
   </div>

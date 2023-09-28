@@ -5,6 +5,7 @@ import { PokedexComponent } from '../pokedex/pokedex.component';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from 'src/app/models/Pokemon';
 import { Tile } from 'src/app/models/Tile';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 
 @Component({
@@ -19,15 +20,12 @@ export class PokeinfoComponent implements OnInit{
   poke={} as Pokemon;
   listSkills={} as any;
 
-  constructor(private http: HttpClient,@Inject(MAT_DIALOG_DATA) public data:PokedexComponent) {}
-  ngOnInit(){
-    this.http
-    .get<any>("https://pokeapi.co/api/v2/pokemon/"+this.data).subscribe(p => {
-    this.listSkills=p;
-    });
-    
-  
 
+  constructor(private _service: PokemonService,@Inject(MAT_DIALOG_DATA) public data:PokedexComponent) {}
+  ngOnInit(){
+    
+    this._service.GetPokemonSkills().subscribe( u=>{this.listSkills=u; console.log(this.listSkills)});
+    
   }
 
 }
