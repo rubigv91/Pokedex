@@ -1,12 +1,30 @@
 <p>pokedex</p>
+<!-- <div>
 
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container *ngFor="let pokemon of listpokemon.results" [matColumnDef]="pokemon.name" >
+    <th mat-header-cell *matHeaderCellDef>
+      {{pokemon.results}}
+    </th>
+    <td mat-cell *matCellDef="let row">
+      {{pokemon.results(row)}}
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div> -->
 <div style="display:flex; justify-content: center; flex-direction:column">
   <div *ngFor="let pokemon of listpokemon.results">
+  
     <div style="display:flex; align-items: center; flex-direction:row">
       <div style="position:relative;width: 100px; height: 48px;">
         <div style="text-transform: capitalize;position: absolute; margin-top: 15px;">
           {{pokemon.name}}
         </div>
+      
       </div>
       <div>
         <button mat-icon-button color="black" (click)="getPokemonByURL(pokemon.url)">
@@ -20,17 +38,6 @@
       </div>
     </div>
   </div>
+  <mat-paginator [pageSize]="25" [length]="150"  aria-label="Select page">
+  </mat-paginator>
 </div>
-
-<table class="example-full-width" cellspacing="0">
-  <tr>
-    <td>
-      <button mat-raised-button >
-        Siguiente
-      </button>
-      <button mat-raised-button >
-        Atras
-      </button>
-    </td>
-  </tr>
-</table>

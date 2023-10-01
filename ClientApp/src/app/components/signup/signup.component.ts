@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/models/Users';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
   equipos=['amarillo', 'rojo', 'azul'];
   usuario={} as Users;
 
- constructor() {
+ constructor(private readonly _service:UserService) {
    
    
  }
@@ -19,9 +20,9 @@ export class SignupComponent implements OnInit {
    
  }
 
- mostrar(item:Users){
+ addUser(item:Users){
    this.usuario=item;
-   console.log(this.usuario)
+   this._service.UserAdd(this.usuario).subscribe();
 
  }
 

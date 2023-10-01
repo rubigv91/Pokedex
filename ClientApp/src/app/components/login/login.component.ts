@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit{
    equipos=['amarillo', 'rojo', 'azul'];
    usuario={} as Users;
    user={} as Users;
+   loginConfirmation={} as boolean;
    
 
   constructor(private readonly _service:UserService) {
@@ -31,7 +32,18 @@ export class LoginComponent implements OnInit{
     this._service.UserSent(temp).subscribe(u=>{
       
       if (this.user!=null){
-        console.log("es un usuario");        
+        this.loginConfirmation=true;
+        console.log("es un usuario");
+        this._service.GetLogin(this.loginConfirmation);
+        console.log(this._service.GetLogin); 
+
+      }
+      else{
+        console.log("no es usuario");
+        this.loginConfirmation=false;
+        this._service.GetLogin(this.loginConfirmation);
+        console.log(this._service.GetLogin); 
+
       }
     });
 

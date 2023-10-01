@@ -11,6 +11,7 @@ import { Users } from 'src/app/models/Users';
 export class UserService {
 
   user:Users={}  as Users;
+  loginConfirmation={} as boolean;
 
   constructor(private readonly httpClient: HttpClient) {}
 
@@ -19,5 +20,14 @@ export class UserService {
     
     
    }
+
+   UserAdd(u:Users){
+    return this.httpClient.post("https://localhost:7132/api/Users/Add",u);
+   }
+
+   
+  GetLogin(confirmation:boolean){
+    this.loginConfirmation=confirmation;
+  }
 
 }

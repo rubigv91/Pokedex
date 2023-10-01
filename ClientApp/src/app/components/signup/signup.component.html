@@ -1,4 +1,4 @@
-<form #myForm="ngForm" (ngSubmit)="mostrar(myForm.value)" class="example-form">
+<form #myForm="ngForm" (ngSubmit)="addUser(myForm.value)" class="example-form">
 
     
     <mat-form-field class="example-full-width">
@@ -7,10 +7,10 @@
   
     <table class="example-full-width" cellspacing="0"><tr>
       <td><mat-form-field class="example-full-width">
-        <input matInput name="nombre" ngModel placeholder="Nombre">
+        <input matInput name="name" ngModel placeholder="Nombre">
       </mat-form-field></td>
       <td><mat-form-field class="example-full-width">
-        <input matInput name="apellido" placeholder="Apellido">
+        <input matInput name="lastName" ngModel placeholder="Apellido">
       </mat-form-field></td>
     </tr></table>
   
@@ -26,7 +26,7 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput name="fechaNacimiento" ngModel [matDatepicker]="picker"
+        <input matInput name="birthDate" ngModel [matDatepicker]="picker"
          placeholder="Fecha de Nacimiento">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -35,9 +35,9 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Selecciona equipo</mat-label>
-        <mat-select name="equipo"  ngModel>
-          <mat-option *ngFor="let equipo of equipos" [value]="equipo">
-            {{equipo}}
+        <mat-select name="team"  ngModel>
+          <mat-option *ngFor="let team of equipos" [value]="team">
+            {{team}}
           </mat-option>
         </mat-select>
       </mat-form-field>

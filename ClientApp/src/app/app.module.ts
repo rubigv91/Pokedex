@@ -13,7 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
 import { PokeinfoComponent } from './components/pokeinfo/pokeinfo.component';
-import { PokefavoriteComponent } from './components/login/pokefavorite/pokefavorite.component';
+import { PokefavoriteComponent } from './components/pokefavorite/pokefavorite.component';
 import { PokesearchComponent } from './components/pokesearch/pokesearch.component';
 
 import {MatInputModule} from '@angular/material/input';
@@ -30,6 +30,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSortModule} from '@angular/material/sort';
 
 
 
@@ -65,13 +66,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatIconModule,
     MatDialogModule,
     MatTableModule,
+    MatSortModule,
     MatPaginatorModule,
     MatGridListModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: PokesearchComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: PokedexComponent, pathMatch: 'full' },
+      { path: 'favorite', component: PokefavoriteComponent },
+      { path: 'search', component: PokesearchComponent},
       { path: 'signup', component: SignupComponent},
       { path: 'login', component: LoginComponent},
 

@@ -11,6 +11,7 @@ export class PokemonService {
   listSkills:any;
   url:string="";
   favoriteURL:string[]=[] as string[] ;
+  listfavoritePokemon:any[]=[] as any[] ;
 
   constructor(private readonly http:HttpClient) { 
 
@@ -41,5 +42,20 @@ export class PokemonService {
       this.AddFavoriteURL(link);
       console.log("pokemon nuevo")
     }
+  }
+
+  GetPokemonFavoriteList(linkList:any){
+
+    linkList.forEach((value:string,index:number) => {
+      this.http.get(value).subscribe(u=>{ 
+        this.listfavoritePokemon.push(u);
+      });
+      });
+
+    
+  }
+
+  AddList(NameList:any){
+    this.listpokemon=NameList;
   }
 }

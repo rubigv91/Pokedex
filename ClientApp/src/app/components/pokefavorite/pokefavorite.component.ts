@@ -1,28 +1,25 @@
-import { DataSource } from '@angular/cdk/collections';
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pokemon } from 'src/app/models/Pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
-
 @Component({
-  selector: 'app-pokesearch',
-  templateUrl: './pokesearch.component.html',
-  styleUrls: ['./pokesearch.component.css']
+  selector: 'app-pokefavorite',
+  templateUrl: './pokefavorite.component.html',
+  styleUrls: ['./pokefavorite.component.css']
 })
-export class PokesearchComponent implements OnInit {
-  
-  listapokemon={} as any;
+export class PokefavoriteComponent implements OnInit {
+  listFavPokemon={} as any;
+  listFavPokemonSkills=[] as any;
   pokemon={} as Pokemon;
   exampleDatabase={} as any;
   displayedColumns: string[] = [ 'name'];
   
   dataSource = [] as any;
 
-  resultsLength = 0;
+  resultsLength = this.listFavPokemon.lenght;
   isLoadingResults = true;
   isRateLimitReached = false;
 
@@ -32,14 +29,19 @@ export class PokesearchComponent implements OnInit {
   constructor(private readonly _service:PokemonService) {}
 
   ngOnInit() {
-    this.listapokemon = this._service.listpokemon; 
-    this.dataSource = new MatTableDataSource (this.listapokemon);   
+    this.listFavPokemon = this._service.favoriteURL;
+    this.listFavPokemonSkills = this._service.listfavoritePokemon;    
+    console.log("Pokemon favoritos");
+    this._service.GetPokemonFavoriteList(this.listFavPokemon);
+    console.log(this.listFavPokemonSkills);
+    this.dataSource = new MatTableDataSource (this.listFavPokemonSkills);
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    
     this.dataSource.paginator = this.paginator;
     console.log(this.dataSource.filter);
+
   }
+
 }

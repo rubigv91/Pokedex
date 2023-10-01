@@ -1,8 +1,8 @@
 export interface Users{ 
-    nombre:string;
-    apellido:string;
+    name:string;
+    lastName:string;
     email:string;
     password:string;
-    fechaNacimiento:Date;
-    equipo:string;
+    birhDate:Date;
+    team:string;
 }
