@@ -32,6 +32,12 @@ export class PokemonService {
     return this.favoriteURL;
   }
 
+  GetListByName(){
+    return this.listpokemon;
+    console.log("GetListbyName");
+    console.log(this.listpokemon);
+  }
+
   CheckFavoriteURL(link:string){
     
     var item = this.favoriteURL.find(u=>link==u);
@@ -57,4 +63,6 @@ export class PokemonService {
   AddList(NameList:any){
     this.listpokemon=NameList;
   }
+
+  
 }

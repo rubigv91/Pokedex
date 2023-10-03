@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,7 @@ import {MatDialog} from '@angular/material/dialog';
   templateUrl: './pokefavorite.component.html',
   styleUrls: ['./pokefavorite.component.css']
 })
-export class PokefavoriteComponent implements OnInit {
+export class PokefavoriteComponent implements OnInit, AfterViewInit {
   listFavPokemon={} as any;
   listFavPokemonSkills=[] as any;
   pokemon={} as Pokemon;
@@ -30,6 +30,9 @@ export class PokefavoriteComponent implements OnInit {
    @ViewChild(MatSort) sort?: MatSort;
 
   constructor(private readonly _service:PokemonService,  public dialog: MatDialog, ) {}
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnInit() {
     this.listFavPokemon = this._service.favoriteURL;

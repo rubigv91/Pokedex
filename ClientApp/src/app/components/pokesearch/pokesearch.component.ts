@@ -7,21 +7,18 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Pokemon } from 'src/app/models/Pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
-
 @Component({
   selector: 'app-pokesearch',
   templateUrl: './pokesearch.component.html',
   styleUrls: ['./pokesearch.component.css']
 })
-export class PokesearchComponent implements OnInit {
+export class PokesearchComponent implements OnInit, AfterViewInit {
   
   listapokemon={} as any;
   pokemon={} as Pokemon;
   exampleDatabase={} as any;
   displayedColumns: string[] = [ 'name'];
-  
   dataSource = [] as any;
-
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
@@ -32,14 +29,17 @@ export class PokesearchComponent implements OnInit {
   constructor(private readonly _service:PokemonService) {}
 
   ngOnInit() {
-    this.listapokemon = this._service.listpokemon; 
+    this.listapokemon = this._service.GetListByName();
     this.dataSource = new MatTableDataSource (this.listapokemon);   
+  }
+
+  ngAfterViewInit(){
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
     this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource.filter);
   }
 }

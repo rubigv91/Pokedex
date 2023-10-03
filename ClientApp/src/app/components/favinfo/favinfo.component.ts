@@ -14,7 +14,8 @@ export class FavinfoComponent {
   constructor( @Inject(MAT_DIALOG_DATA) public data:PokefavoriteComponent) {
     
     this.listSkills = data;
-    console.log(this.listSkills);
+    console.log("lista de skills")
+    console.log(this.listSkills.item);
   }
 
 }

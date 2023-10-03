@@ -3,11 +3,96 @@
     <div>
         {{listSkills.name}}
     </div>
-    <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile>{{listSkills.item.name}}</mat-grid-tile>
-        <mat-grid-tile>{{listSkills.item.id}}</mat-grid-tile>
-        <mat-grid-tile>{{listSkills.item.height}} </mat-grid-tile>
-        <mat-grid-tile>{{listSkills.item.abilities.ability}} </mat-grid-tile>
+    <mat-grid-list cols="3" rowHeight="300px">
+        <mat-grid-tile style="text-transform: capitalize">
+            <div>
+                <div>
+                    <h1>
+                        {{listSkills.item.name}} # {{listSkills.item.id}}
+                    </h1>
+                </div>
+                <div>
+                    <img *ngIf="listSkills.item.id"
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{listSkills.item.id}}.png">
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div style="display:flex; justify-content: center; flex-direction:column">
+                <div>
+                    Altura: {{listSkills.item.height}}
+                </div>
+                <div>
+                    Peso:{{listSkills.item.weight}}
+                </div>
+                <div>
+                    Tipo:
+                </div>
+                <div style="display:flex; justify-content: center; flex-direction:column;text-transform: capitalize"
+                    *ngFor="let tipo of listSkills.item.types">
+                    <div>
+                        {{tipo.type.name}}
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div style="display:flex; justify-content: center; flex-direction:column">
+                <div>
+                    Stats:
+                </div>
+                <div style="display:flex; justify-content: center; flex-direction:column;text-transform: capitalize"
+                    *ngFor="let stats of listSkills.item.stats">
+                    <div>
+                        {{stats.stat.name}} : {{stats.base_stat}}
+                    </div>
+                </div>
+            </div>
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+            
+            <div style="display:flex; justify-content: center; flex-direction:column">
+                <div>
+                    Stats:
+                </div>
+                <div style="display:flex; justify-content: center; flex-direction:column;text-transform: capitalize"
+                    *ngFor="let skill of listSkills.item.abilities">
+                    <div>
+                        {{skill.ability.name}} 
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            
+            <div style="display:flex; justify-content: center; flex-direction:column">
+                <div>
+                    Movimientos:
+                </div>
+                <div style="display:flex; justify-content: center; flex-direction:column;text-transform: capitalize"
+                    *ngFor="let movimiento of listSkills.item.moves">
+                    <div>
+                        {{movimiento.move.name}} 
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            
+            <div style="display:flex; justify-content: center; flex-direction:column">
+                <div>
+                    Versiones de juego:
+                </div>
+                <div style="display:flex; justify-content: center; flex-direction:column;text-transform: capitalize"
+                    *ngFor="let vertion of listSkills.item.game_indices">
+                    <div>
+                        {{vertion.version.name}} 
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
     </mat-grid-list>
 
 

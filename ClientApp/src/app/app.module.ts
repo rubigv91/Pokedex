@@ -69,12 +69,12 @@ import { AuthGuard } from './guards/auth.guard';
     MatGridListModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: PokedexComponent, pathMatch: 'full' },
+      { path: '', component: PokesearchComponent, pathMatch: 'full' },
       { path: 'favorite', component: PokefavoriteComponent, canActivate:[AuthGuard]},
-      { path: 'search', component: PokesearchComponent},
+      { path: 'search', component: PokesearchComponent,canActivate:[AuthGuard]},
       { path: 'signup', component: SignupComponent},
       { path: 'login', component: LoginComponent},
-      { path: 'pokedex', component: PokedexComponent},
+      { path: 'pokedex', component: PokedexComponent,canActivate:[AuthGuard]},
 
 
     ])

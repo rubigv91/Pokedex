@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject, ViewChild } from '@angular/core';
+import { Component, OnInit,Inject, ViewChild, AfterViewInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Pokemon } from 'src/app/models/Pokemon';
 import {MatDialog} from '@angular/material/dialog';
@@ -15,59 +15,52 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./pokedex.component.css'],
   
 })
-export class PokedexComponent implements OnInit {
+export class PokedexComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-	constructor(private http: HttpClient, public dialog: MatDialog, 
-   private readonly _service:PokemonService) {}
- 
-	listpokemon={} as any;
+  listpokemon={} as any;
+  listapokemon={} as any;
   pokemon={} as Pokemon;
   color:string='accent';
   tempFavoriteURL:FavoriteURL[]=[] as FavoriteURL[];
   temp={} as any;
   url:string="";
   dataSource = [] as any;
+  displayedColumns: string[] = [ 'name'];
 
+  constructor(private http: HttpClient, public dialog: MatDialog,
+    private readonly _service: PokemonService) { }
 
-  ngOnInit() {
-   
-    this.dataSource = new MatTableDataSource(this.listpokemon);
+  ngOnInit() {    
 		 this._service.GetPokemonList().subscribe(data => {
       this.listpokemon = data;
+      this.dataSource = new MatTableDataSource(this.listpokemon);
       this._service.AddList(data.results);
-    });;
-    console.log("inicio de pokedex");
-    console.log(this.listpokemon);
-    //displayedColumns = this.listpokemon.map(c => c.listapokemon.results);
+     
+    });
+
+    this.listapokemon = this._service.GetListByName();
+    this.dataSource = new MatTableDataSource (this.listapokemon);          
+   // this.displayedColumns = this.listpokemon.MatPaginator();
   }
-
- 
-
   favoritear(link:string){
-
     this._service.CheckFavoriteURL(link);
-
      }
 
   getPokemonByURL(url:string){
       this._service.url=url;
-    
        this.dialog.open(PokeinfoComponent, { height:'50%',
          data:url      
-        
         });
-
   }
 
-  
   OnPageChange(event:PageEvent){
-    console.log("entro a evento");
-    this.dataSource.paginator = this.paginator;
+    //this.dataSource.paginator = this.paginator;
   }
   
   ngAfterViewInit() {
-    
+    console.log("after de pokedex");    
+    //this.dataSource.paginator = this.paginator;    
   }
 
 }
