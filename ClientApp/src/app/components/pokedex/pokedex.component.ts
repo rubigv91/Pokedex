@@ -18,6 +18,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class PokedexComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
+  p:number=1;
   listpokemon={} as any;
   listapokemon={} as any;
   pokemon={} as Pokemon;
