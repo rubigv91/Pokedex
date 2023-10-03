@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -68,7 +68,7 @@ import { AuthGuard } from './guards/auth.guard';
     MatPaginatorModule,
     MatGridListModule,
     NgxPaginationModule,
-    FormsModule,
+    
     RouterModule.forRoot([
       { path: '', component: PokesearchComponent, pathMatch: 'full' },
       { path: 'favorite', component: PokefavoriteComponent, canActivate:[AuthGuard]},
