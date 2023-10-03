@@ -1,0 +1,15 @@
+<div style="height: 600px; width: 400px ">
+
+    <div>
+        {{listSkills.name}}
+    </div>
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>{{listSkills.item.name}}</mat-grid-tile>
+        <mat-grid-tile>{{listSkills.item.id}}</mat-grid-tile>
+        <mat-grid-tile>{{listSkills.item.height}} </mat-grid-tile>
+        <mat-grid-tile>{{listSkills.item.abilities.ability}} </mat-grid-tile>
+    </mat-grid-list>
+
+
+    <button mat-button mat-dialog-close>Cerrar</button>
+</div>

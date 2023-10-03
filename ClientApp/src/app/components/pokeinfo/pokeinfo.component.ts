@@ -17,7 +17,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokeinfoComponent implements OnInit{
 
-  poke={} as Pokemon;
+
   listSkills={} as any;
 
 

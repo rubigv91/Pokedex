@@ -37,22 +37,21 @@ export class PokemonService {
     var item = this.favoriteURL.find(u=>link==u);
     if (item){ 
       console.log("pokemon existente");
+      
     }
     else {
       this.AddFavoriteURL(link);
-      console.log("pokemon nuevo")
+      this.GetPokemonFavoriteList(link);
     }
   }
 
   GetPokemonFavoriteList(linkList:any){
 
-    linkList.forEach((value:string,index:number) => {
-      this.http.get(value).subscribe(u=>{ 
+    
+      this.http.get(linkList).subscribe(u=>{ 
         this.listfavoritePokemon.push(u);
       });
-      });
-
-    
+    console.log(this.listfavoritePokemon);
   }
 
   AddList(NameList:any){

@@ -4,6 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pokemon } from 'src/app/models/Pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { FavinfoComponent } from '../favinfo/favinfo.component';
+import {MatDialog} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-pokefavorite',
@@ -26,14 +29,12 @@ export class PokefavoriteComponent implements OnInit {
    @ViewChild(MatPaginator) paginator?: MatPaginator;
    @ViewChild(MatSort) sort?: MatSort;
 
-  constructor(private readonly _service:PokemonService) {}
+  constructor(private readonly _service:PokemonService,  public dialog: MatDialog, ) {}
 
   ngOnInit() {
     this.listFavPokemon = this._service.favoriteURL;
     this.listFavPokemonSkills = this._service.listfavoritePokemon;    
-    console.log("Pokemon favoritos");
-    this._service.GetPokemonFavoriteList(this.listFavPokemon);
-    console.log(this.listFavPokemonSkills);
+    
     this.dataSource = new MatTableDataSource (this.listFavPokemonSkills);
   }
 
@@ -41,7 +42,16 @@ export class PokefavoriteComponent implements OnInit {
     
     this.dataSource.paginator = this.paginator;
     console.log(this.dataSource.filter);
-
+    
   }
 
+  getPokemonInfo(item:any) {
+    this.dialog.open(FavinfoComponent, {
+      data: {
+        item },
+    });
+  }
+  refresh(){
+    console.log("refresh")
+  }
 }

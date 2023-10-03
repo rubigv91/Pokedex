@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -27,14 +27,11 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
-import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSortModule} from '@angular/material/sort';
-
-
-
-
+import { FavinfoComponent } from './components/favinfo/favinfo.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
@@ -50,6 +47,7 @@ import {MatSortModule} from '@angular/material/sort';
     PokeinfoComponent,
     PokefavoriteComponent,
     PokesearchComponent,
+    FavinfoComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -72,16 +70,17 @@ import {MatSortModule} from '@angular/material/sort';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: PokedexComponent, pathMatch: 'full' },
-      { path: 'favorite', component: PokefavoriteComponent },
+      { path: 'favorite', component: PokefavoriteComponent, canActivate:[AuthGuard]},
       { path: 'search', component: PokesearchComponent},
       { path: 'signup', component: SignupComponent},
       { path: 'login', component: LoginComponent},
-
+      { path: 'pokedex', component: PokedexComponent},
 
 
     ])
   ],
-  providers: [],
+  providers: [AuthGuard],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

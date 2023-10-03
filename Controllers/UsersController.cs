@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pokedex.Models;
+
 
 namespace Pokedex.Controllers
 {
@@ -25,17 +27,23 @@ namespace Pokedex.Controllers
             return Created("/login",user);
         }
 
-        [HttpPost]
-        public ActionResult ReadLogin([FromBody] UserLogin userlogin)
+        [HttpGet]
+        public ActionResult ReadLogin([FromQuery(Name="email")] string email, [FromQuery(Name = "pwd")] string pwd)
         {
+            var userlogin = new UserLogin()
+            {
+                email = email,
+                pwd = pwd   
+            };
+
 
             var check = _userService.ReadLogin(userlogin);
             if (check != null)
             {
 
-                return Ok(check);
+                return Ok(true);
             }
-            return NotFound();
+            return NoContent();
         }
 
         [HttpGet]

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserLogin } from 'src/app/models/UserLogin';
 import { Users } from 'src/app/models/Users';
@@ -10,13 +10,18 @@ import { Users } from 'src/app/models/Users';
 })
 export class UserService {
 
-  user:Users={}  as Users;
-  loginConfirmation={} as boolean;
+  private loginConfirmation:boolean= false;
+
+
 
   constructor(private readonly httpClient: HttpClient) {}
 
-   UserSent(item:UserLogin) {
-    return this.httpClient.post<Users>("https://localhost:7132/api/Users/ReadLogin",item);
+
+   GetUser(item:UserLogin) {
+    let params= new HttpParams();
+    params=params.append('email',item.email);
+    params=params.append('pwd',item.pwd);
+    return this.httpClient.get<boolean>("https://localhost:7132/api/Users/ReadLogin",{params});
     
     
    }
@@ -27,7 +32,18 @@ export class UserService {
 
    
   GetLogin(confirmation:boolean){
-    this.loginConfirmation=confirmation;
+    
+    if (confirmation){
+
+      this.loginConfirmation=true;
+    }
+  
+    return 
+  
+  }
+
+  GetLoginConfirmation(){
+    return this.loginConfirmation;
   }
 
 }
