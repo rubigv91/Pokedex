@@ -50,7 +50,7 @@ export class PokedexComponent implements OnInit, AfterViewInit {
 
   getPokemonByURL(url:string){
       this._service.url=url;
-       this.dialog.open(PokeinfoComponent, { height:'50%',
+       this.dialog.open(PokeinfoComponent, { height:'600px',
          data:url      
         });
   }

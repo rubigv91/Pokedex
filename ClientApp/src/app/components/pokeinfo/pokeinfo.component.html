@@ -51,15 +51,15 @@
         {{skills.ability.name}}
       </div>
     </div>
-    <div>
+    <div style="max-height: 400px; overflow-y: auto;" >
       Movimiento
       <hr>
-      <div *ngFor="let moves of listSkills.moves">
+      <div  *ngFor="let moves of listSkills.moves">
         {{moves.move.name}}
       </div>
     </div>
-    <div>
-      Versiones donde aparece
+    <div style="max-height: 250px; overflow-y: auto;" >
+      Versiones 
       <hr>
       <div *ngFor="let version of listSkills.game_indices">
         {{version.version.name}}

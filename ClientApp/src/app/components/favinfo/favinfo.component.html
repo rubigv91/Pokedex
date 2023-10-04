@@ -1,4 +1,4 @@
-<div style="height: 600px; width: 400px ">
+<div style="height: 800px; width: 400px ">
 
     <div>
         {{listSkills.name}}
@@ -50,51 +50,64 @@
             </div>
 
         </mat-grid-tile>
-        <mat-grid-tile>
-            
-            <div style="display:flex; justify-content: center; flex-direction:column">
-                <div>
-                    Stats:
-                </div>
-                <div style="display:flex; justify-content: center; flex-direction:column;text-transform: capitalize"
-                    *ngFor="let skill of listSkills.item.abilities">
-                    <div>
-                        {{skill.ability.name}} 
-                    </div>
-                </div>
-            </div>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-            
-            <div style="display:flex; justify-content: center; flex-direction:column">
-                <div>
-                    Movimientos:
-                </div>
-                <div style="display:flex; justify-content: center; flex-direction:column;text-transform: capitalize"
-                    *ngFor="let movimiento of listSkills.item.moves">
-                    <div>
-                        {{movimiento.move.name}} 
-                    </div>
-                </div>
-            </div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            
-            <div style="display:flex; justify-content: center; flex-direction:column">
-                <div>
-                    Versiones de juego:
-                </div>
-                <div style="display:flex; justify-content: center; flex-direction:column;text-transform: capitalize"
-                    *ngFor="let vertion of listSkills.item.game_indices">
-                    <div>
-                        {{vertion.version.name}} 
-                    </div>
-                </div>
-            </div>
-        </mat-grid-tile>
+    </mat-grid-list >
+    <mat-grid-list cols="3" rowHeight="1em" style="margin-bottom: 0.5em;">
+    <mat-grid-tile>
+        <b>
+            Habilidades:
+        </b>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <b>
+            Movimientos:
+        </b>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <b>
+            Versiones:
+        </b>
+    </mat-grid-tile>
     </mat-grid-list>
+<mat-grid-list cols="3" rowHeight="300px" style="position: relative;">
+    <mat-grid-tile style=" max-height: 250px; overflow-y: auto;">
+        <div style="display:flex; justify-content: center; flex-direction:column">
+          
+            <div style="text-transform: capitalize"
+                *ngFor="let skill of listSkills.item.abilities">
+                <div>
+                    {{skill.ability.name}}
+                </div>
+            </div>
+        </div>
+    </mat-grid-tile> 
+    <mat-grid-tile style="max-height: 250px; overflow-y: auto;">
+        <div >
+            <div>
+                Movimientos:
+            </div>
+            <div style="overflow-y: auto; text-transform: capitalize"
+                *ngFor="let movimiento of listSkills.item.moves">
+                <div>
+                    {{movimiento.move.name}}
+                </div>
+            </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile style="max-height: 250px; overflow-y: auto;">
 
+        <div>
+            <div>
+                Versiones de juego:
+            </div>
+            <div style="text-transform: capitalize"
+                *ngFor="let vertion of listSkills.item.game_indices">
+                <div>
+                    {{vertion.version.name}}
+                </div>
+            </div>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
 
     <button mat-button mat-dialog-close>Cerrar</button>
 </div>
