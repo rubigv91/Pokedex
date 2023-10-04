@@ -70,7 +70,7 @@ import { AuthGuard } from './guards/auth.guard';
     NgxPaginationModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: PokesearchComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'favorite', component: PokefavoriteComponent, canActivate:[AuthGuard]},
       { path: 'search', component: PokesearchComponent,canActivate:[AuthGuard]},
       { path: 'signup', component: SignupComponent},

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this._service.GetUser(temp).subscribe(u => {
       console.log(u);
       this._service.GetLogin(u);
-      if (this._service.GetLoginConfirmation()) this.router.navigate(['/', 'favorite']);
+      if (this._service.GetLoginConfirmation()) this.router.navigate(['/', 'pokedex']);
 
     });
 

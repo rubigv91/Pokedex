@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Users } from 'src/app/models/Users';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit {
   equipos=['amarillo', 'rojo', 'azul'];
   usuario={} as Users;
 
- constructor(private readonly _service:UserService) {
+ constructor(private readonly _service:UserService, private router: Router) {
    
    
  }
@@ -23,7 +24,7 @@ export class SignupComponent implements OnInit {
  addUser(item:Users){
    this.usuario=item;
    this._service.UserAdd(this.usuario).subscribe();
-
+   this.router.navigateByUrl('/');
  }
 
  

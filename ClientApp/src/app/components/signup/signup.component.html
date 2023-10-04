@@ -20,7 +20,7 @@
       </mat-form-field>
  
       <mat-form-field class="example-full-width">
-        <input matInput name="password" ngModel #message maxlength="256" placeholder="Contraseña">
+        <input matInput type="password" name="password" ngModel #message maxlength="256" placeholder="Contraseña">
         <mat-hint align="start"><strong>Al menos 8 caracteres para la contraseña</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 12</mat-hint>
       </mat-form-field>
